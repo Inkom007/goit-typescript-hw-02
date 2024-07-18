@@ -1,4 +1,4 @@
-import { Formik, Form, Field } from "formik";
+import { Field, Formik, Form } from "formik";
 
 const SearchBar = ({ onSubmit }) => {
   const initialValues = {
@@ -10,8 +10,8 @@ const SearchBar = ({ onSubmit }) => {
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Form>
           <Field
-            name="query"
             type="text"
+            name="query"
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
