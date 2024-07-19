@@ -1,10 +1,10 @@
 .button {
-  background-color: rgb(18, 100, 18);
+  background-color: rgb(196, 90, 24);
   padding: 10px;
   border: none;
   border-radius: 4px;
   color: aliceblue;
   margin: 0 auto;
   display: block;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

@@ -10,20 +10,15 @@
   height: 30px;
 }
 
-.input:focus {
-  outline: none;
-  border-color: black;
-}
-
 .button {
   padding: 0 10px;
   border: none;
-  background-color: rgb(18, 100, 18);
+  background-color: rgb(196, 90, 24);
   border-radius: 4px;
   color: aliceblue;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 button:hover {
-  background-color: rgb(42, 167, 42);
-  box-shadow: 0 0 20px rgba(0, 255, 149, 0.5);
+  background-color: rgb(200, 99, 21);
+  box-shadow: 0 0 20px rgba(230, 121, 3, 0.822);
 }
