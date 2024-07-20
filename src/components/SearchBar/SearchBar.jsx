@@ -12,7 +12,8 @@ const SearchBar = ({ onSubmit }) => {
       toast.error("Please, enter a text to search for images.");
       return;
     }
-    onSubmit(values, actions);
+    onSubmit(values.query);
+    actions.resetForm();
   };
 
   return (

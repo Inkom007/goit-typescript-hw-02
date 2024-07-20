@@ -4,9 +4,9 @@ import { Toaster } from "react-hot-toast";
 import { useEffect, useState } from "react";
 import fetchPhotos from "./services/api";
 import Loader from "./components/Loader/Loader";
-import { ErrorMessage } from "formik";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 
 const App = () => {
   const [results, setResults] = useState([]);
@@ -55,18 +55,19 @@ const App = () => {
     setPage(1);
   };
 
-  const handleSubmit = (values, actions) => {
-    handleSetQuery(values.query);
-    actions.resetForm();
+  const handleLoadMore = () => {
+    setPage((prev) => prev + 1);
   };
 
   return (
     <>
-      <SearchBar onSubmit={handleSubmit} />
+      <SearchBar onSubmit={handleSetQuery} />
       {isError && <ErrorMessage />}
       <ImageGallery items={results} onImageClick={openModal} />
       {isLoading && <Loader />}
-      {total > page && !isLoading && <LoadMoreBtn setPage={setPage} />}
+      {total > page && !isLoading && (
+        <LoadMoreBtn onLoadMore={handleLoadMore} />
+      )}
       <Toaster />
       <ImageModal
         isOpen={isModalOpen}
