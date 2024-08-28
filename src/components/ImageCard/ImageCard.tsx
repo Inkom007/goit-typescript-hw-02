@@ -1,4 +1,7 @@
-const ImageCard = ({ item, onClick }) => {
+import { Image } from "../../App/App.types";
+import { ImageCardProps } from "../../App/App.types";
+
+const ImageCard: React.FC<ImageCardProps> = ({ item, onClick }) => {
   return (
     <div>
       <img

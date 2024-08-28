@@ -1,13 +1,17 @@
-import { Field, Formik, Form } from "formik";
+import { Field, Formik, Form, FormikHelpers } from "formik";
 import toast from "react-hot-toast";
 import s from "./SearchBar.module.css";
+import { SearchBarOnSubmit } from "../../App/App.types";
 
-const SearchBar = ({ onSubmit }) => {
+const SearchBar: React.FC<SearchBarOnSubmit> = ({ onSubmit }) => {
   const initialValues = {
     query: "",
   };
 
-  const handleSubmit = (values, actions) => {
+  const handleSubmit = (
+    values: { query: string },
+    actions: FormikHelpers<{ query: string }>
+  ) => {
     if (!values.query.trim()) {
       toast.error("Please, enter a text to search for images.");
       return;

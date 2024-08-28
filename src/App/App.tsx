@@ -1,35 +1,36 @@
-import SearchBar from "./components/SearchBar/SearchBar";
-import ImageGallery from "./components/ImageGallery/ImageGallery";
+import SearchBar from "../components/SearchBar/SearchBar";
+import ImageGallery from "../components/ImageGallery/ImageGallery";
 import { Toaster } from "react-hot-toast";
 import { useEffect, useState } from "react";
-import fetchPhotos from "./services/api";
-import Loader from "./components/Loader/Loader";
-import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
-import ImageModal from "./components/ImageModal/ImageModal";
-import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
+import fetchPhotos from "../services/api";
+import Loader from "../components/Loader/Loader";
+import LoadMoreBtn from "../components/LoadMoreBtn/LoadMoreBtn";
+import ImageModal from "../components/ImageModal/ImageModal";
+import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
+import { Image } from "./App.types";
 
-const App = () => {
-  const [results, setResults] = useState([]);
-  const [query, setQuery] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [total, setTotal] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentImg, setCurrentImg] = useState("");
+const App: React.FC = () => {
+  const [results, setResults] = useState<Image[]>([]);
+  const [query, setQuery] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [total, setTotal] = useState<number>(0);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [currentImg, setCurrentImg] = useState<string>("");
 
-  const openModal = (imageUrl) => {
+  const openModal = (imageUrl: string): void => {
     setCurrentImg(imageUrl);
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
+  const closeModal = (): void => {
     setIsModalOpen(false);
     setCurrentImg("");
   };
 
   useEffect(() => {
-    const getPhotos = async () => {
+    const getPhotos = async (): Promise<void> => {
       if (!query) {
         return;
       }
@@ -49,13 +50,13 @@ const App = () => {
     getPhotos();
   }, [query, page]);
 
-  const handleSetQuery = (query) => {
+  const handleSetQuery = (query: string): void => {
     setQuery(query);
     setResults([]);
     setPage(1);
   };
 
-  const handleLoadMore = () => {
+  const handleLoadMore = (): void => {
     setPage((prev) => prev + 1);
   };
 
