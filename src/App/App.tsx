@@ -7,7 +7,7 @@ import Loader from "../components/Loader/Loader";
 import LoadMoreBtn from "../components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "../components/ImageModal/ImageModal";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
-import { Image } from "./App.types";
+import { Image, Response } from "./App.types";
 
 const App: React.FC = () => {
   const [results, setResults] = useState<Image[]>([]);
@@ -30,7 +30,7 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    const getPhotos = async (): Promise<void> => {
+    const getPhotos = async () => {
       if (!query) {
         return;
       }

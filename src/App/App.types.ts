@@ -30,3 +30,9 @@ export interface ImageCardProps {
 export interface SearchBarOnSubmit {
   onSubmit: (query: string) => void;
 }
+
+export interface Response {
+  total: number;
+  total_pages: number;
+  results: Image[];
+}
